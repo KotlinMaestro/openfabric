@@ -1,0 +1,8 @@
+# Excluding Gradle files
+.gradle
+.env
+/gradle/
+.idea/
+gradlew.bat
+gradlew
+/openfabric-api/build/
