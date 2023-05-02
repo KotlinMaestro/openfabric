@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+    // Adding docker dependency
+    implementation 'com.github.docker-java:docker-java:3.2.11'
     //-------
     implementation 'com.yahoo.elide:elide-spring-boot-starter:4.8.0'
     implementation 'me.paulschwarz:spring-dotenv:2.5.4'
