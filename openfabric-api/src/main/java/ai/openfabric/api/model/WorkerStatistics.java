@@ -1,35 +1,32 @@
 package ai.openfabric.api.model;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Map;
 
-@Entity()
+@Entity
 @Getter
 @Setter
-public class Worker extends Datable implements Serializable {
+public class WorkerStatistics extends Datable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "of-uuid")
     @GenericGenerator(name = "of-uuid", strategy = "ai.openfabric.api.model.IDGenerator")
-    @Getter
-    @Setter
-    public String id;
+    private String id;
 
-    public String name;
+    @OneToOne
+    @JoinColumn(name = "worker_id", referencedColumnName = "id")
+    private Worker worker;
 
-    //Added new fields
-    @Column(nullable = false)
-    private String containerID;
+    private double cpuUsage;
 
-    @Column(nullable = false)
-    private  String status;
+    private long memoryUsage;
 
-    @ElementCollection
-    private Map<String, String> ports;
+    private long networkRxBytes;
+
+    private long networkTxBytes;
+
 }
